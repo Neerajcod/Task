@@ -32,7 +32,7 @@ $tasks = $result->fetch_all(MYSQLI_ASSOC);
     <main>
         <div class="container my-5">
           <div class="border border-dark rounded p-4 mb-5" style="max-width: 600px; margin: auto;">
-                <h1 class="text-center">Create Task</h1>
+                <h1 class="text-center">Create Task</h1><hr>
                 <form method="post" action="">
                     <div class="mb-3">
                         <label for="title" class="form-label">Title</label>
@@ -42,7 +42,7 @@ $tasks = $result->fetch_all(MYSQLI_ASSOC);
                         <label for="desc" class="form-label">Description</label>
                         <textarea class="form-control" name="desc" id="desc" placeholder="Enter description" maxlength="500" rows="3" style="resize:none" required></textarea>
                         <small class="form-text text-muted">*Maximum length: 500 characters.</small>
-                    </div>
+                    </div><hr>
                     <button type="submit" class="btn btn-primary w-100">Create Task</button>
                 </form>
             </div>
@@ -63,12 +63,12 @@ $tasks = $result->fetch_all(MYSQLI_ASSOC);
                             <div class="col-md-4">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h5 class="card-title"><?= htmlspecialchars($task['title']) ?></h5>
-                                        <p class="card-text"><?= htmlspecialchars($task['description']) ?></p>
+                                        <h5 class="card-title"><?= htmlspecialchars($task['title']) ?></h5><hr>
+                                        <p class="card-text"><?= htmlspecialchars($task['description']) ?></p><hr>
                                         <div class="d-flex justify-content-between mb-2">
                                             <span class="btn <?= $btnClass ?>"><?= htmlspecialchars($task['status']) ?></span>
                                             <span class="border border-dark rounded p-1"><?= htmlspecialchars($task['created_at']) ?></span>
-                                        </div>
+                                        </div><hr>
                                         <div class="d-flex justify-content-between">
                                             <a href="edit.php?id=<?= $task['id'] ?>" class="btn btn-primary">Edit</a>
                                             <a href="delete.php?id=<?= $task['id'] ?>" class="btn btn-danger" onclick="return confirm('Do you want to delete this task?');">Delete</a>
