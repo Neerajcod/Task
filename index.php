@@ -1,8 +1,7 @@
 <?php
-// Database connection
+
 include "connection.php";
 
-// Handle form submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $title = $_POST['title'];
     $description = $_POST['desc'];
@@ -14,11 +13,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-// Fetch all tasks
 $sql = "SELECT * FROM `tasks` ORDER BY `id` DESC";
 $result = $conn->query($sql);
 $tasks = $result->fetch_all(MYSQLI_ASSOC);
 ?>
+
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -31,8 +31,7 @@ $tasks = $result->fetch_all(MYSQLI_ASSOC);
     <header></header>
     <main>
         <div class="container my-5">
-            <!-- Task Creation Form -->
-            <div class="border border-dark rounded p-4 mb-5" style="max-width: 600px; margin: auto;">
+          <div class="border border-dark rounded p-4 mb-5" style="max-width: 600px; margin: auto;">
                 <h1 class="text-center">Create Task</h1>
                 <form method="post" action="">
                     <div class="mb-3">
@@ -41,13 +40,13 @@ $tasks = $result->fetch_all(MYSQLI_ASSOC);
                     </div>
                     <div class="mb-3">
                         <label for="desc" class="form-label">Description</label>
-                        <input type="text" class="form-control" name="desc" id="desc" placeholder="Enter description" required>
+                        <textarea class="form-control" name="desc" id="desc" placeholder="Enter description" maxlength="500" rows="3" style="resize:none" required></textarea>
+                        <small class="form-text text-muted">*Maximum length: 500 characters.</small>
                     </div>
                     <button type="submit" class="btn btn-primary w-100">Create Task</button>
                 </form>
             </div>
 
-            <!-- Task Display Section -->
             <h2 class="text-center border border-dark p-2">View Tasks</h2>
             <?php if (!empty($tasks)): ?>
                 <div class="container mt-4">
